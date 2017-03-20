@@ -1,8 +1,8 @@
 #**Traffic Sign Recognition** 
 
-##Writeup
-
 ---
+
+## Project Goals
 
 **Build a Traffic Sign Recognition Project**
 
@@ -17,8 +17,8 @@ The goals / steps of this project are the following:
 
 [//]: # (Image References)
 
-[image1]: ./examples/visualization.jpg "Visualization"
-[image2]: ./examples/grayscale.jpg "Grayscaling"
+[example_images]: ./example_images.png "Example Images"
+[unbalanced_dataset]: ./unbalanced_dataset.png "Unbalanced Dataset"
 [image3]: ./examples/random_noise.jpg "Random Noise"
 [image4]: ./examples/placeholder.png "Traffic Sign 1"
 [image5]: ./examples/placeholder.png "Traffic Sign 2"
@@ -26,37 +26,40 @@ The goals / steps of this project are the following:
 [image7]: ./examples/placeholder.png "Traffic Sign 4"
 [image8]: ./examples/placeholder.png "Traffic Sign 5"
 
-## Rubric Points
-###Here I will consider the [rubric points](https://review.udacity.com/#!/rubrics/481/view) individually and describe how I addressed each point in my implementation.  
-
 ---
 ###Writeup / README
 
 ####1. Provide a Writeup / README that includes all the rubric points and how you addressed each one. You can submit your writeup as markdown or pdf. You can use this template as a guide for writing the report. The submission includes the project code.
 
-You're reading it! and here is a link to my [project code](https://github.com/udacity/CarND-Traffic-Sign-Classifier-Project/blob/master/Traffic_Sign_Classifier.ipynb)
+You're reading it! and here is a link to my [project code](https://github.com/mkolod/CarND-Traffic-Sign-Classifier-Project/blob/master/Traffic_Sign_Classifier.ipynb).
 
 ###Data Set Summary & Exploration
 
 ####1. Provide a basic summary of the data set and identify where in your code the summary was done. In the code, the analysis should be done using python, numpy and/or pandas methods rather than hardcoding results manually.
 
-The code for this step is contained in the second code cell of the IPython notebook.  
+The code for this step is contained in code cell #2 of the IPython notebook.  
 
-I used the pandas library to calculate summary statistics of the traffic
-signs data set:
+In cell #2, I used NumPy to determine the number of training examples (34,799), as well as validation and testing examples (4,410 and 12,630, respectively). 
 
-* The size of training set is ?
-* The size of test set is ?
-* The shape of a traffic sign image is ?
-* The number of unique classes/labels in the data set is ?
+* The size of training set is 34,799
+* The size of the validation set is 4,410
+* The size of test set is 12,630
+* The shape of a traffic sign image is (32, 32, 3)
+* The number of unique classes/labels in the data set is 43
 
 ####2. Include an exploratory visualization of the dataset and identify where the code is in your code file.
 
-The code for this step is contained in the third code cell of the IPython notebook.  
+The code for this step is contained in code cells #5 and #7 of the IPython notebook.  
 
-Here is an exploratory visualization of the data set. It is a bar chart showing how the data ...
+In code cell #5, I display 15 examples of each traffic sign class, for all 43 classes. As one can see on those images, the image quality isn't uniform - some have very good contrast and brightness, others don't. This persuaded me to pursue image adjustments prior to feeding the data into the convolutional neural network, e.g. histogram equalization (see later sections).
 
-![alt text][image1]
+![Example Images][example_images]
+
+In code cell #7, I plotted the image counts per class. It is clear from that image that this is a very unbalanced dataset, with some classes having about 180 examples, while others included close to 2,000 examples. This prompted me to oversample the rare classes, and to include image augmentation (e.g. rotation, saturation adjustment, etc.) to increase the effective size of the dataset, and to help the model learn to recognize sign patterns while ignoring certain image distortions or other idiosyncracies.
+
+![Unbalanced Dataset][unbalanced_dataset]
+
+
 
 ###Design and Test a Model Architecture
 
