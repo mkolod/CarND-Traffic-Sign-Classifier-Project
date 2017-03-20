@@ -1,4 +1,4 @@
-# **Traffic Sign Recognition** 
+ffic Sign Recognition** 
 
 ---
 
@@ -149,11 +149,11 @@ Lastly, since the dataset was small, I had to tune the amount of image augmentat
 
 Here are five German traffic signs that I found on the web:
 
-![No Entry][no_entry]
-![Priority Road][priority_road]
-![Right of Way][right_of_way]
-![Road Work][road_work]
-![Stop Sign][stop_sign]
+![no_entry][No Entry]
+![priority_road][Priority Road]
+![right_of_way][Right of Way]
+![road_work][Road Work]
+![stop_sign][Stop Sign]
 
 The first image might be difficult to classify because ...
 
