@@ -165,17 +165,6 @@ I wouldn't say these images are necessarily difficult to classify - after all, j
 
 The code for making predictions on my final model is located in code cell #23 of the IPython notebook
 
-
-![No Entry][no_entry]
-
-![Priority Road][priority_road]
-
-![Right of Way][right_of_way]
-
-![Road Work][road_work]
-
-![Stop Sign][stop_sign]
-
 Here are the results of the prediction:
 
 | Image			        |     Prediction	        					| 
