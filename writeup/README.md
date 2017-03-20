@@ -163,20 +163,31 @@ I wouldn't say these images are necessarily difficult to classify - after all, j
 
 #### 2. Discuss the model's predictions on these new traffic signs and compare the results to predicting on the test set. Identify where in your code predictions were made. At a minimum, discuss what the predictions were, the accuracy on these new predictions, and compare the accuracy to the accuracy on the test set (OPTIONAL: Discuss the results in more detail as described in the "Stand Out Suggestions" part of the rubric).
 
-The code for making predictions on my final model is located in the tenth cell of the Ipython notebook.
+The code for making predictions on my final model is located in code cell #23 of the IPython notebook
+
+
+![No Entry][no_entry]
+
+![Priority Road][priority_road]
+
+![Right of Way][right_of_way]
+
+![Road Work][road_work]
+
+![Stop Sign][stop_sign]
 
 Here are the results of the prediction:
 
 | Image			        |     Prediction	        					| 
 |:---------------------:|:---------------------------------------------:| 
-| Stop Sign      		| Stop sign   									| 
-| U-turn     			| U-turn 										|
-| Yield					| Yield											|
-| 100 km/h	      		| Bumpy Road					 				|
-| Slippery Road			| Slippery Road      							|
+| No Entry      		| No Entry   									| 
+| Priority Road     	| Priority Road 								|
+| Right of Way			| Right of Way									|
+| Road Work	      		| Road Work 					 				|
+| Stop Sign 			| Stop Sign        							    |
 
 
-The model was able to correctly guess 4 of the 5 traffic signs, which gives an accuracy of 80%. This compares favorably to the accuracy on the test set of ...
+The model was able to correctly guess 5 of the 5 traffic signs, which gives an accuracy of 100%. This compares favorably to the accuracy on the test set of 95%. Of course, in practice one wouldn't want to only test on new images. The test set had 12,630 images, and once we test the model on a fixed dataset, we should collect more images "from the wild" to assess real-world generalization, as opposed to just generalization on the held out test set.
 
 #### 3. Describe how certain the model is when predicting on each of the five new images by looking at the softmax probabilities for each prediction and identify where in your code softmax probabilities were outputted. Provide the top 5 softmax probabilities for each image along with the sign type of each probability. (OPTIONAL: as described in the "Stand Out Suggestions" part of the rubric, visualizations can also be provided such as bar charts)
 
