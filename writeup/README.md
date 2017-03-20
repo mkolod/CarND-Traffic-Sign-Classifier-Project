@@ -1,4 +1,4 @@
-# **Traffic Sign Recognition** 
+ffic Sign Recognition** 
 
 ---
 
@@ -21,6 +21,11 @@ The goals / steps of this project are the following:
 [unbalanced_dataset]: ./unbalanced_dataset.png "Unbalanced Dataset"
 [equalized_images]: ./equalized_images.png "Equalized Images"
 [balanced_dataset]: ./balanced_dataset.png "Balanced Dataset"
+[no_entry]: ../new_examples/no_entry.png "No Entry"
+[priority_road]: ../new_examples/priority_road.png "Priority Road"
+[right_of_way]: ../new_examples/right_of_way.png "Right of Way"
+[road_work]: ../new_examples/road_work.png "Road Work"
+[stop_sign]: ../new_examples/stop_sign.png "Stop Sign"
 
 ---
 ### Writeup / README
@@ -97,11 +102,11 @@ My final model consisted of the following layers:
 | Convolution 5x5     	| 1x1 stride, same padding, outputs 32x32x16 	|
 | RELU					|												|
 | Max pooling	      	| 2x2 stride, outputs 16x16x16 	 		  	    |
-| Convolution 5x5	    | 1x1 stride, same padding, outputs 16x16x16  	|
+| Convolution 5x5	    | 1x1 stride, same padding, outputs 16x16x32  	|
 | RELU                  |                                               |
-| Max pooling           | 2x2 stride, outputs 8x8x16                    |
-| Flattening layer      | output: 1,024 units                           |
-| Fully connected		| 1,024x86 units        						|
+| Max pooling           | 2x2 stride, outputs 8x8x32                    |
+| Flattening layer      | output: 2,048 units                           |
+| Fully connected		| 2,048x86 units        						|
 | RELU                  |                                               |
 | Dropout               | Keep probability = 0.5                        |
 | Fully connected       | 86x43 units                                   |
@@ -121,25 +126,22 @@ I used a batch size of 128. I tried smaller batches and they weren't helping con
 
 #### 5. Describe the approach taken for finding a solution. Include in the discussion the results on the training, validation and test sets and where in the code these were calculated. Your approach may have been an iterative process, in which case, outline the steps you took to get to the final solution and why you chose those steps. Perhaps your solution involved an already well known implementation or architecture. In this case, discuss why you think the architecture is suitable for the current problem.
 
-The code for calculating the accuracy of the model is located in the ninth cell of the Ipython notebook.
-
+The code for calculating the accuracy of the model is located in cell #18 of the IPython notebook.
+fir
 My final model results were:
-* training set accuracy of ?
-* validation set accuracy of ? 
-* test set accuracy of ?
+* validation set accuracy of 0.969 
+* test set accuracy of 0.950
 
-If an iterative approach was chosen:
-* What was the first architecture that was tried and why was it chosen?
-* What were some problems with the initial architecture?
-* How was the architecture adjusted and why was it adjusted? Typical adjustments could include choosing a different model architecture, adding or taking away layers (pooling, dropout, convolution, etc), using an activation function or changing the activation function. One common justification for adjusting an architecture would be due to over fitting or under fitting. A high accuracy on the training set but low accuracy on the validation set indicates over fitting; a low accuracy on both sets indicates under fitting.
-* Which parameters were tuned? How were they adjusted and why?
-* What are some of the important design choices and why were they chosen? For example, why might a convolution layer work well with this problem? How might a dropout layer help with creating a successful model?
+I didn't care to report training set accuracy here, because it's irrelevant from the perspective of model generalization. Of course, we can determine if the model is underfitting if both training and validation errors are low, or overfitting when training error is low and validation error is high. However, ultimately, the tuning was based on the value of the validation error, since the model hasn't seen the validation data during training. The final assessment was done on the test set, which hasn't been indirectly seen by the model during hyperparameter tuning, which was the case with the validation dataset.
 
-If a well known architecture was chosen:
-* What architecture was chosen?
-* Why did you believe it would be relevant to the traffic sign application?
-* How does the final model's accuracy on the training, validation and test set provide evidence that the model is working well?
- 
+I chose an iterative approach to finding the best model. 
+
+The starting point was LeNet-5, because the dataset was of a similar size in terms of the number of samples, as well as the image size. Another point of inspiration was the model typically used for the CIFAR-10 dataset, which had 60,000 images and 10 image classes, but unlike MNIST, it was based on color images and real-life objects and animals, such as planes and cats, rather than digits. However, number of classes was higher in the traffic sign dataset, and the data more diverse, so I determined that I would have to do some tuning. In particular, I iterated over choosing the number of convolutional filters, and ultimately increased them to 16 in the first convolutional layer and 32 in the second convolutional layer.
+
+The other hyperparameter tuning had to do with the amount of dropout between the first fully connected layer and the second fully connected layer. Since fully connected layers have many more parameters than convolutional layers and hence contribute more to overfitting, I kept tuning the dropout "keep probability" rate, and ultimately I settled on 0.5.
+
+Lastly, since the dataset was small, I had to tune the amount of image augmentation, such as the maximum angle by which to rotate the images, and the amount of saturation adjustment. I finally chose a maximum rotation of 20 degrees, and a maximum saturation adjustment of 10% from the original image.
+
 
 ### Test a Model on New Images
 
@@ -147,8 +149,11 @@ If a well known architecture was chosen:
 
 Here are five German traffic signs that I found on the web:
 
-![alt text][image4] ![alt text][image5] ![alt text][image6] 
-![alt text][image7] ![alt text][image8]
+![no_entry][No Entry]
+![priority_road][Priority Road]
+![right_of_way][Right of Way]
+![road_work][Road Work]
+![stop_sign][Stop Sign]
 
 The first image might be difficult to classify because ...
 
