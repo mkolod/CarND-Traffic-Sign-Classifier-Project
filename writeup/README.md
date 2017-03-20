@@ -87,20 +87,25 @@ Note that the effective size of the training set was actually larger than the ab
 
 #### 3. Describe, and identify where in your code, what your final model architecture looks like including model type, layers, layer sizes, connectivity, etc.) Consider including a diagram and/or table describing the final model.
 
-The code for my final model is located in the seventh cell of the ipython notebook. 
+The code for my final model is located code cell #X in the IPython notebook.
 
 My final model consisted of the following layers:
 
 | Layer         		|     Description	        					| 
 |:---------------------:|:---------------------------------------------:| 
 | Input         		| 32x32x3 RGB image   							| 
-| Convolution 3x3     	| 1x1 stride, same padding, outputs 32x32x64 	|
+| Convolution 5x5     	| 1x1 stride, same padding, outputs 32x32x16 	|
 | RELU					|												|
-| Max pooling	      	| 2x2 stride,  outputs 16x16x64 				|
-| Convolution 3x3	    | etc.      									|
-| Fully connected		| etc.        									|
-| Softmax				| etc.        									|
-|						|												|
+| Max pooling	      	| 2x2 stride, outputs 16x16x16 	 		  	    |
+| Convolution 5x5	    | 1x1 stride, same padding, outputs 16x16x16  	|
+| RELU                  |                                               |
+| Max pooling           | 2x3 stride, outputs 8x8x16                    |
+| Flattening layer      | output: 1,024 units                           |
+| Fully connected		| 1,024x86 units        						|
+| RELU                  |                                               |
+| Dropout               | Keep probability = 0.5                        |
+| Fully connected       | 86x43 units                                   |
+| Softmax				|       									    |
 |						|												|
  
 
