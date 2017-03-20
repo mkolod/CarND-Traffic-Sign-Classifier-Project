@@ -18,7 +18,7 @@ The goals / steps of this project are the following:
 [//]: # (Image References)
 
 [example_images]: ./example_images.png "Example Images"
-[unbalanced_dataset]: ./unbalanced_dataset.png "Unbalanced Dataset"'
+[unbalanced_dataset]: ./unbalanced_dataset.png "Unbalanced Dataset"
 [equalized_images]: ./equalized_images.png "Equalized Images"
 
 
