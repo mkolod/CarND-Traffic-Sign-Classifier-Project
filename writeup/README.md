@@ -22,10 +22,10 @@ The goals / steps of this project are the following:
 [equalized_images]: ./equalized_images.png "Equalized Images"
 [balanced_dataset]: ./balanced_dataset.png "Balanced Dataset"
 [no_entry]: ../new_examples/no_entry.png "No Entry"
-[priority_road]: ../new_examples/priority_road.png "Priority Road"
-[right_of_way]: ../new_examples/right_of_way.png "Right of Way"
-[road_work]: ../new_examples/road_work.png "Road Work"
-[stop_sign]: ../new_examples/stop_sign.png "Stop Sign"
+[priority_road]: ./priority_road.png "Priority Road"
+[right_of_way]: ./right_of_way.png "Right of Way"
+[road_work]: ./road_work.png "Road Work"
+[stop_sign]: ./stop_sign.png "Stop Sign"
 
 ---
 ### Writeup / README
