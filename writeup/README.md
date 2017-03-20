@@ -18,13 +18,9 @@ The goals / steps of this project are the following:
 [//]: # (Image References)
 
 [example_images]: ./example_images.png "Example Images"
-[unbalanced_dataset]: ./unbalanced_dataset.png "Unbalanced Dataset"
-[image3]: ./examples/random_noise.jpg "Random Noise"
-[image4]: ./examples/placeholder.png "Traffic Sign 1"
-[image5]: ./examples/placeholder.png "Traffic Sign 2"
-[image6]: ./examples/placeholder.png "Traffic Sign 3"
-[image7]: ./examples/placeholder.png "Traffic Sign 4"
-[image8]: ./examples/placeholder.png "Traffic Sign 5"
+[unbalanced_dataset]: ./unbalanced_dataset.png "Unbalanced Dataset"'
+[equalized_images]: ./equalized_images.png "Equalized Images"
+
 
 ---
 ###Writeup / README
@@ -60,10 +56,17 @@ In code cell #7, I plotted the image counts per class. It is clear from that ima
 ![Unbalanced Dataset][unbalanced_dataset]
 
 
-
 ###Design and Test a Model Architecture
 
 ####1. Describe how, and identify where in your code, you preprocessed the image data. What tecniques were chosen and why did you choose these techniques? Consider including images showing the output of each preprocessing technique. Pre-processing refers to techniques such as converting to grayscale, normalization, etc.
+
+I decided not to convert images to grayscale, since color has significance for human users of these signs. For example, even if the number inside a white circle with a red border isn't clearly visible, one can still narrow down the sign to a speed limit. I tried grayscaling the images and found that this caused a drop in accuracy, so I used all 3 color channels.
+
+The preprocessing that I did do included histogram normalization, to make contrast and brightness in the images more equal. This helped improve accuracy and produced images that were also easier to assess to a human (I couldn't decipher some images without histogram equalization myself). This code can be found in the equalize_hist() function in code cell #8. The result of this adjustment can be seen below - compare these images to the original images presented earlier. 
+
+
+
+Another issue had to do with balancing the dataset. Since the class with the highest count had 2,010 examples but the smallest had 180, I oversampled the less frequent classes to improve the learning of those classes. Since this also artificially put more emphasis on identical images from the oversampled images, this could have lead to memorization (overfitting) rather than generalization. To address this, I augmented the dataset by applying random rotations and saturation adjustments The code for these rotations and saturation adjustments can also be found in cell #8.
 
 The code for this step is contained in the fourth code cell of the IPython notebook.
 
