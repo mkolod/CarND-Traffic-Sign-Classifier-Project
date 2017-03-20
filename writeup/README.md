@@ -64,7 +64,7 @@ I decided not to convert images to grayscale, since color has significance for h
 
 The preprocessing that I did do included histogram normalization, to make contrast and brightness in the images more equal. This helped improve accuracy and produced images that were also easier to assess to a human (I couldn't decipher some images without histogram equalization myself). This code can be found in the equalize_hist() function in code cell #8. The result of this adjustment can be seen below - compare these images to the original images presented earlier. 
 
-
+![Equalized Images][equalized_images]
 
 Another issue had to do with balancing the dataset. Since the class with the highest count had 2,010 examples but the smallest had 180, I oversampled the less frequent classes to improve the learning of those classes. Since this also artificially put more emphasis on identical images from the oversampled images, this could have lead to memorization (overfitting) rather than generalization. To address this, I augmented the dataset by applying random rotations and saturation adjustments The code for these rotations and saturation adjustments can also be found in cell #8.
 
