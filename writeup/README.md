@@ -99,7 +99,7 @@ My final model consisted of the following layers:
 | Max pooling	      	| 2x2 stride, outputs 16x16x16 	 		  	    |
 | Convolution 5x5	    | 1x1 stride, same padding, outputs 16x16x16  	|
 | RELU                  |                                               |
-| Max pooling           | 2x3 stride, outputs 8x8x16                    |
+| Max pooling           | 2x2 stride, outputs 8x8x16                    |
 | Flattening layer      | output: 1,024 units                           |
 | Fully connected		| 1,024x86 units        						|
 | RELU                  |                                               |
