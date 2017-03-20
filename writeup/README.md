@@ -21,7 +21,7 @@ The goals / steps of this project are the following:
 [unbalanced_dataset]: ./unbalanced_dataset.png "Unbalanced Dataset"
 [equalized_images]: ./equalized_images.png "Equalized Images"
 [balanced_dataset]: ./balanced_dataset.png "Balanced Dataset"
-[no_entry]: ../new_examples/no_entry.png "No Entry"
+[no_entry]: ./no_entry.png "No Entry"
 [priority_road]: ./priority_road.png "Priority Road"
 [right_of_way]: ./right_of_way.png "Right of Way"
 [road_work]: ./road_work.png "Road Work"
