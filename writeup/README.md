@@ -87,7 +87,7 @@ Note that the effective size of the training set was actually larger than the ab
 
 #### 3. Describe, and identify where in your code, what your final model architecture looks like including model type, layers, layer sizes, connectivity, etc.) Consider including a diagram and/or table describing the final model.
 
-The code for my final model is located code cell #X in the IPython notebook.
+The code for my final model is located code cell #16 in the IPython notebook.
 
 My final model consisted of the following layers:
 
@@ -112,9 +112,12 @@ My final model consisted of the following layers:
 
 #### 4. Describe how, and identify where in your code, you trained your model. The discussion can include the type of optimizer, the batch size, number of epochs and any hyperparameters such as learning rate.
 
-The code for training the model is located in the eigth cell of the ipython notebook. 
+The code for training the model is located in code cell #20 of the IPython notebook, however some setup for things such as the learning rate and some placeholders was done in code cells #17-18.
 
-To train the model, I used an ....
+I chose a learning rate of 0.001. Higher learning rates didn't work well in terms of final accuracy on the validation set, and there was no point lowering the rate further than necessary for convergence. Since using pure SGD is usually fraught with problems (one has to either choose a very low learning rate from the beginning, or start with a higher rate and apply a learning rate annealing schedule), I used the Adam optimizer here. The literature suggests that nothing really beats very heavily tuned SGD (in terms of weight decay, learning rate decay, etc.), but optimizers with a quasi "automatic" adaptive learning rate are a good place to start.
+
+I used a batch size of 128. I tried smaller batches and they weren't helping convergence, while they were hurting the efficient use of the GPU. Sometimes smaller batches are better to provide a greater stochasticity to the optimization process, to avoid getting stuck in a bad local optimum. Paradoxically, as we use a bigger batch size and get a better estimate of the gradient, it's easier to fall into such a "sharp minumum. [This paper](https://arxiv.org/pdf/1609.04836.pdf) discusses the problem of large batches in detail.
+
 
 #### 5. Describe the approach taken for finding a solution. Include in the discussion the results on the training, validation and test sets and where in the code these were calculated. Your approach may have been an iterative process, in which case, outline the steps you took to get to the final solution and why you chose those steps. Perhaps your solution involved an already well known implementation or architecture. In this case, discuss why you think the architecture is suitable for the current problem.
 
