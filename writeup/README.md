@@ -180,18 +180,57 @@ The model was able to correctly guess 5 of the 5 traffic signs, which gives an a
 
 #### 3. Describe how certain the model is when predicting on each of the five new images by looking at the softmax probabilities for each prediction and identify where in your code softmax probabilities were outputted. Provide the top 5 softmax probabilities for each image along with the sign type of each probability. (OPTIONAL: as described in the "Stand Out Suggestions" part of the rubric, visualizations can also be provided such as bar charts)
 
-The code for making predictions on my final model is located in the 11th cell of the Ipython notebook.
+The code for making predictions on my final model is located in cell #23 of the IPython notebook, with the top 5 predictions per image being reported based on code found in cell #24 of the notebook. 
 
-For the first image, the model is relatively sure that this is a stop sign (probability of 0.6), and the image does contain a stop sign. The top five soft max probabilities were
+For the first image (stop sign), the top five softmax probabilities were:
 
 | Probability         	|     Prediction	        					| 
 |:---------------------:|:---------------------------------------------:| 
-| .60         			| Stop sign   									| 
-| .20     				| U-turn 										|
-| .05					| Yield											|
-| .04	      			| Bumpy Road					 				|
-| .01				    | Slippery Road      							|
+| 1.00         			| Stop sign   									| 
+| 0.00     				| Speed limit (20 km/h)							|
+| 0.00					| Speed limit (30 km/h)							|
+| 0.00	      			| Speed limit (50 km/h)			 				|
+| 0.00				    | Speed limit (60 km/h)  						|
 
 
-For the second image ... 
+For the second image (right of way), the top five softmax probabilities were:
+
+| Probability         	|     Prediction	        					| 
+|:---------------------:|:---------------------------------------------:| 
+| 1.00         			| Right of way   								| 
+| 0.00     				| Speed limit (20 km/h)							|
+| 0.00					| Speed limit (30 km/h)							|
+| 0.00	      			| Speed limit (50 km/h)			 				|
+| 0.00				    | Speed limit (60 km/h)  						|
+
+For the third image (road work), the top five softmax probabilities were:
+
+| Probability         	|     Prediction	        					| 
+|:---------------------:|:---------------------------------------------:| 
+| 1.00         			| Road work     								| 
+| 0.00     				| Speed limit (20 km/h)							|
+| 0.00					| Speed limit (30 km/h)							|
+| 0.00	      			| Speed limit (50 km/h)			 				|
+| 0.00				    | Speed limit (60 km/h)  						|
+
+For the fourth image (no entry), the top five softmax probabilities were:
+
+| Probability         	|     Prediction	        					| 
+|:---------------------:|:---------------------------------------------:| 
+| 1.00         			| No entry      								| 
+| 0.00     				| Speed limit (20 km/h)							|
+| 0.00					| Speed limit (30 km/h)							|
+| 0.00	      			| Speed limit (50 km/h)			 				|
+| 0.00				    | Speed limit (60 km/h)  						|
+
+For the second image (priority road), the top five softmax probabilities were:
+
+| Probability         	|     Prediction	        					| 
+|:---------------------:|:---------------------------------------------:| 
+| 1.00         			| Priority road   								| 
+| 0.00     				| Speed limit (20 km/h)							|
+| 0.00					| Speed limit (30 km/h)							|
+| 0.00	      			| Speed limit (50 km/h)			 				|
+| 0.00				    | Speed limit (60 km/h)  						|
+
 
