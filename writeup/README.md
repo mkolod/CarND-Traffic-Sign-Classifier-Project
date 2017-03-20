@@ -74,20 +74,16 @@ Since this also artificially put more emphasis on identical images from the over
 
 #### 2. Describe how, and identify where in your code, you set up training, validation and testing data. How much data was in each set? Explain what techniques were used to split the data into these sets. (OPTIONAL: As described in the "Stand Out Suggestions" part of the rubric, if you generated additional data for training, describe why you decided to generate additional data, how you generated the data, identify where in your code, and provide example images of the additional data)
 
-The code for splitting the data into training and validation sets is contained in the fifth code cell of the IPython notebook.  
+The training, validation and testing data were already given. I could have probably concatenated the dataset and reshuffled it, then split it again into training, validation and testing, but I assumed that the idea was to use the splits provided in the pickled files, which were loaded in code cell #1.
 
-To cross validate my model, I randomly split the training data into a training set and validation set. I did this by ...
+To recap, the breakdown was as follows:
+* training data: 34,799 images
+* validation data: 4,410 images
+* testing data: 12,630 images
 
-My final training set had X number of images. My validation set and test set had Y and Z number of images.
+The reason for both a training and a validation split was that I kept using the validation dataset to tweak the hyperparameters. Therefore, even though the model hasn't seen the validation data during training, it has indirectly seen validation data, since my hyperparameter changes were aimed at improving validation accuracy. Therefore, the final accuracy needed to be based on data that has not been seen at all, either for training or for hyperparameter tuning.
 
-The sixth code cell of the IPython notebook contains the code for augmenting the data set. I decided to generate additional data because ... To add more data to the the data set, I used the following techniques because ... 
-
-Here is an example of an original image and an augmented image:
-
-![alt text][image3]
-
-The difference between the original data set and the augmented data set is the following ... 
-
+Note that the effective size of the training set was actually larger than the above mentioned 34,799 images, due to oversampling of the rare classes, which resulted in the total dataset size being  86,430 (most frequent class with 2,010 images times 43 classes, with the remaining 42 being oversampled to a count of 2,010 each). Also, since I kept applying random rotations and saturation adjustments, the theoretical size of the training set could have been closer to each image being unique, so 86,430 times the number of epochs. Since I ran for 30 epochs, the number of "unique" images after augmentation could have been 2,592,900, if none of the augmentations were the same for the same base image.
 
 #### 3. Describe, and identify where in your code, what your final model architecture looks like including model type, layers, layer sizes, connectivity, etc.) Consider including a diagram and/or table describing the final model.
 
