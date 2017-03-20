@@ -20,7 +20,7 @@ The goals / steps of this project are the following:
 [example_images]: ./example_images.png "Example Images"
 [unbalanced_dataset]: ./unbalanced_dataset.png "Unbalanced Dataset"
 [equalized_images]: ./equalized_images.png "Equalized Images"
-
+[balanced_dataset]: ./balanced_dataset.png "Balanced Dataset"
 
 ---
 ###Writeup / README
@@ -66,17 +66,11 @@ The preprocessing that I did do included histogram normalization, to make contra
 
 ![Equalized Images][equalized_images]
 
-Another issue had to do with balancing the dataset. Since the class with the highest count had 2,010 examples but the smallest had 180, I oversampled the less frequent classes to improve the learning of those classes. Since this also artificially put more emphasis on identical images from the oversampled images, this could have lead to memorization (overfitting) rather than generalization. To address this, I augmented the dataset by applying random rotations and saturation adjustments The code for these rotations and saturation adjustments can also be found in cell #8.
+Another issue had to do with balancing the dataset. Since the class with the highest count had 2,010 examples but the smallest had 180, I oversampled the less frequent classes to improve the learning of those classes. The code for balancing the classes by oversampling can be found in code cell #12. As you can see below, the class membership got balanced as a result - this visualization was executed in code cell #15.
 
-The code for this step is contained in the fourth code cell of the IPython notebook.
+![Balanced Dataset][balanced_dataset]
 
-As a first step, I decided to convert the images to grayscale because ...
-
-Here is an example of a traffic sign image before and after grayscaling.
-
-![alt text][image2]
-
-As a last step, I normalized the image data because ...
+Since this also artificially put more emphasis on identical images from the oversampled images, this could have lead to memorization (overfitting) rather than generalization. To address this, I augmented the dataset by applying random rotations and saturation adjustments The code for these rotations and saturation adjustments can also be found in code cell #8.
 
 ####2. Describe how, and identify where in your code, you set up training, validation and testing data. How much data was in each set? Explain what techniques were used to split the data into these sets. (OPTIONAL: As described in the "Stand Out Suggestions" part of the rubric, if you generated additional data for training, describe why you decided to generate additional data, how you generated the data, identify where in your code, and provide example images of the additional data)
 
@@ -187,3 +181,4 @@ For the first image, the model is relatively sure that this is a stop sign (prob
 
 
 For the second image ... 
+
