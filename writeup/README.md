@@ -1,4 +1,4 @@
-ffic Sign Recognition** 
+# **Traffic Sign Recognition** 
 
 ---
 
@@ -102,9 +102,11 @@ My final model consisted of the following layers:
 | Convolution 5x5     	| 1x1 stride, same padding, outputs 32x32x16 	|
 | RELU					|												|
 | Max pooling	      	| 2x2 stride, outputs 16x16x16 	 		  	    |
+| Local resp. normaliz. |                                               |
 | Convolution 5x5	    | 1x1 stride, same padding, outputs 16x16x32  	|
 | RELU                  |                                               |
 | Max pooling           | 2x2 stride, outputs 8x8x32                    |
+| Local resp. normaliz. |                                               |
 | Flattening layer      | output: 2,048 units                           |
 | Fully connected		| 2,048x86 units        						|
 | RELU                  |                                               |
@@ -129,9 +131,9 @@ I used a batch size of 128. I tried smaller batches and they weren't helping con
 The code for calculating the accuracy of the model is located in cell #18 of the IPython notebook.
 
 My final model results were:
-* Training set accuracy: 1.00
-* Validation set accuracy: 0.985
-* Test set accuracy: 0.959
+* Training set accuracy: 0.999
+* Validation set accuracy: 0.972
+* Test set accuracy: 0.956
 
 I chose an iterative approach to finding the best model. 
 
@@ -185,52 +187,51 @@ For the first image (stop sign), the top five softmax probabilities were:
 
 | Probability         	|     Prediction	        					| 
 |:---------------------:|:---------------------------------------------:| 
-| 1.00         			| Stop sign   									| 
-| 0.00     				| Speed limit (20 km/h)							|
-| 0.00					| Speed limit (30 km/h)							|
-| 0.00	      			| Speed limit (50 km/h)			 				|
-| 0.00				    | Speed limit (60 km/h)  						|
+| 0.99998      			| Stop sign   									| 
+| 0.00001  				| Speed limit (70km/h)							|
+| 0.00					| No vehicles       							|
+| 0.00	      			| Yield             			 				|
+| 0.00				    | Speed limit (120km/h)  						|
 
 
 For the second image (right of way), the top five softmax probabilities were:
 
 | Probability         	|     Prediction	        					| 
 |:---------------------:|:---------------------------------------------:| 
-| 1.00         			| Right of way   								| 
-| 0.00     				| Speed limit (20 km/h)							|
-| 0.00					| Speed limit (30 km/h)							|
-| 0.00	      			| Speed limit (50 km/h)			 				|
-| 0.00				    | Speed limit (60 km/h)  						|
+| 0.99940      			| Right of way   								| 
+| 0.00060     			| Beware of ice/snow 							|
+| 0.00					| Speed limit (30km/h)							|
+| 0.00	      			| Pedestrians       			 				|
+| 0.00				    | Road work             						|
 
 For the third image (road work), the top five softmax probabilities were:
 
 | Probability         	|     Prediction	        					| 
 |:---------------------:|:---------------------------------------------:| 
-| 1.00         			| Road work     								| 
-| 0.00     				| Speed limit (20 km/h)							|
-| 0.00					| Speed limit (30 km/h)							|
-| 0.00	      			| Speed limit (50 km/h)			 				|
-| 0.00				    | Speed limit (60 km/h)  						|
+| 0.75515         		| Road work     								| 
+| 0.23537     	    	| General caution   							|
+| 0.00476				| Speed limit (80 km/h)							|
+| 0.00303	      	    | Traffic signals   			 				|
+| 0.00137			    | Speed limit (30 km/h)  						|
 
 For the fourth image (no entry), the top five softmax probabilities were:
 
 | Probability         	|     Prediction	        					| 
 |:---------------------:|:---------------------------------------------:| 
-| 1.00         			| No entry      								| 
-| 0.00     				| Speed limit (20 km/h)							|
-| 0.00					| Speed limit (30 km/h)							|
-| 0.00	      			| Speed limit (50 km/h)			 				|
-| 0.00				    | Speed limit (60 km/h)  						|
+| 0.99811      			| No entry      								| 
+| 0.00189 				| Stop              							|
+| 0.00					| Bumpy road        							|
+| 0.00	      			| Wild animals crossing 		 				|
+| 0.00				    | Traffic signals       						|
 
 For the second image (priority road), the top five softmax probabilities were:
 
 | Probability         	|     Prediction	        					| 
 |:---------------------:|:---------------------------------------------:| 
 | 1.00         			| Priority road   								| 
-| 0.00     				| Speed limit (20 km/h)							|
-| 0.00					| Speed limit (30 km/h)							|
-| 0.00	      			| Speed limit (50 km/h)			 				|
-| 0.00				    | Speed limit (60 km/h)  						|
+| 0.00     				| No entry          							|
+| 0.00					| Stop              							|
+| 0.00	      			| No passing for veh. > 3.5 metric tons			|
+| 0.00				    | Traffic signals       						|
 
-
-
+Note: initially I didn't have the local response normalization (LRN) layers, and the probabilities on the images downloaded from the internet (not from the original dataset) were always 1.0 for one class and 0.0 for all others. This seemed like a very hard boundary, and LRN helped address this. Batch normalization could have helped as well. I also tried L2 regularization on all weights other than biases (convolutional and fully-connected weights), in addition to dropout on the fully-connected layer, and that helped the "hard boundary" problem a little bit, but not nearly as much as LRN. LRN also allowed the model to learn in fewer epochs to get the same validation accuracy as before.
