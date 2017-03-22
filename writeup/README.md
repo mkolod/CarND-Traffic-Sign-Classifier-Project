@@ -1,4 +1,4 @@
-# **Traffic Sign Recognition** 
+ffic Sign Recognition** 
 
 ---
 
@@ -127,12 +127,11 @@ I used a batch size of 128. I tried smaller batches and they weren't helping con
 #### 5. Describe the approach taken for finding a solution. Include in the discussion the results on the training, validation and test sets and where in the code these were calculated. Your approach may have been an iterative process, in which case, outline the steps you took to get to the final solution and why you chose those steps. Perhaps your solution involved an already well known implementation or architecture. In this case, discuss why you think the architecture is suitable for the current problem.
 
 The code for calculating the accuracy of the model is located in cell #18 of the IPython notebook.
-fir
-My final model results were:
-* validation set accuracy of 0.969 
-* test set accuracy of 0.950
 
-I didn't care to report training set accuracy here, because it's irrelevant from the perspective of model generalization. Of course, we can determine if the model is underfitting if both training and validation errors are low, or overfitting when training error is low and validation error is high. However, ultimately, the tuning was based on the value of the validation error, since the model hasn't seen the validation data during training. The final assessment was done on the test set, which hasn't been indirectly seen by the model during hyperparameter tuning, which was the case with the validation dataset.
+My final model results were:
+* Training set accuracy: 1.00
+* Validation set accuracy: 0.985
+* Test set accuracy: 0.959
 
 I chose an iterative approach to finding the best model. 
 
@@ -163,7 +162,7 @@ I wouldn't say these images are necessarily difficult to classify - after all, j
 
 #### 2. Discuss the model's predictions on these new traffic signs and compare the results to predicting on the test set. Identify where in your code predictions were made. At a minimum, discuss what the predictions were, the accuracy on these new predictions, and compare the accuracy to the accuracy on the test set (OPTIONAL: Discuss the results in more detail as described in the "Stand Out Suggestions" part of the rubric).
 
-The code for making predictions on my final model is located in code cell #23 of the IPython notebook
+The code for making predictions on my final model is located in code cell #24 of the IPython notebook
 
 Here are the results of the prediction:
 
@@ -180,7 +179,7 @@ The model was able to correctly guess 5 of the 5 traffic signs, which gives an a
 
 #### 3. Describe how certain the model is when predicting on each of the five new images by looking at the softmax probabilities for each prediction and identify where in your code softmax probabilities were outputted. Provide the top 5 softmax probabilities for each image along with the sign type of each probability. (OPTIONAL: as described in the "Stand Out Suggestions" part of the rubric, visualizations can also be provided such as bar charts)
 
-The code for making predictions on my final model is located in cell #23 of the IPython notebook, with the top 5 predictions per image being reported based on code found in cell #24 of the notebook. 
+The code for making predictions on my final model is located in cell #25 of the IPython notebook, with the top 5 predictions per image being reported based on code found in cell #26 of the notebook. 
 
 For the first image (stop sign), the top five softmax probabilities were:
 
@@ -232,5 +231,6 @@ For the second image (priority road), the top five softmax probabilities were:
 | 0.00					| Speed limit (30 km/h)							|
 | 0.00	      			| Speed limit (50 km/h)			 				|
 | 0.00				    | Speed limit (60 km/h)  						|
+
 
 
